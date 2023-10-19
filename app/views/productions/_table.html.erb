@@ -1,0 +1,45 @@
+<div class="mt-6 overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                    Produto
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Quantidade (Kgs)
+                </th>
+                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                    Data
+                </th>
+                <th scope="col" class="px-6 py-3">
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @productions.each do |production| %>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                  <%= production.product.name %>
+                </th>
+                <td class="px-6 py-4">
+                  <%= production.quantity %>
+                </td>
+                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                    <%= production.date_time %>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex space-x-2 items-center">
+                    <div>
+                      <button class="btn-primary">Editar</button>
+                    </div>
+                    <div>
+                      <button class="btn-second">Excluir</button>
+                    </div>
+                  </div>
+                </td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table>
+</div>

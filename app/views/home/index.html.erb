@@ -1,0 +1,15 @@
+<div class="flex justify-center">
+  <div class="px-2 font-bold text-center w-1/2 bg-white rounded-lg mb-12">
+    <p class="text-3xl py-4">Painel de Controle</p>
+  </div>
+</div>
+<div class="mx-auto justify-end flex">
+  <%= turbo_frame_tag 'new_record_component', class: "space-x-2" do %>
+    <%= link_to 'new_sale_path', id:'sale_link', class:"btn-green" do %>
+      + Venda
+    <% end %>
+    <%= link_to new_production_path, id:'production_link', class:"btn-green" do %>
+      + Produção
+    <% end %>
+  <% end %>
+</div>

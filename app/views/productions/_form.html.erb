@@ -1,0 +1,30 @@
+<%= turbo_frame_tag 'new_record_component' do %>
+  <div class="w-full items-center bg-white rounded-lg shadow-lg p-2">
+    <%= form_with(model: @production, class: '') do |f| %>
+      <% if production.errors.any? %>
+        <div class="bg-red-400 p-2 rounded-lg mb-2">
+          <% production.errors.each do |error|%>
+            <div class="text-white">
+              <span><%= error.full_message %></span>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <div class="space-y-2 md:flex md:items-center md:space-x-2 md:space-y-0">
+      <div class="md:w-2/6">
+        <%= f.select :product_id, @products, { include_blank: "Selecione" }, class: "input" %>
+      </div >
+        <div class="md:w-1/4">
+        <%= f.text_field :quantity, class: "input ", placeholder: "Qtd" %>
+      </div >
+      <div class="md:w-1/4">
+        <%= f.date_field :date_time, class: "input", placeholder: "Data" %>
+      </div >
+      <div class="flex space-x-1">
+        <%= f.submit "Confirmar", class: "btn-green" %>
+        <%= link_to "Voltar", :back, class: "btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% end %>
