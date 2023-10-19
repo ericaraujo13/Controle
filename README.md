@@ -1,10 +1,11 @@
-# README
+# Sistema de Gerenciamento de Estoque e Controle de Caixa
 
-Sistema de gerenciamento de estoque e controle de caixa para pequenas empresas.
-Ferramentas 
+Este é um sistema de gerenciamento de estoque e controle de caixa destinado a pequenas empresas. 
 
-Ruby on Rails
-TaiwindCss
-StimulusJS
-Hotwire
-Postgresql
+## Ferramentas Utilizadas
+
+- Ruby on Rails
+- Tailwind CSS
+- StimulusJS
+- Hotwire
+- PostgreSQL
