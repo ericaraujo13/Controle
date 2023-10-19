@@ -2,7 +2,7 @@ class ProductionsController < ApplicationController
   before_action :set_production, only: %i[ show edit update destroy ]
 
   def index
-    @productions = Production.all
+    @productions = Production.all.order(date_time: :desc)
     prepare_form
   end
 

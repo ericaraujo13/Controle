@@ -5,7 +5,7 @@
 </div>
 <div class="mx-auto justify-end flex">
   <%= turbo_frame_tag 'new_record_component', class: "space-x-2" do %>
-    <%= link_to 'new_sale_path', id:'sale_link', class:"btn-green" do %>
+    <%= link_to new_transaction_path, id:'sale_link', class:"btn-green" do %>
       + Venda
     <% end %>
     <%= link_to new_production_path, id:'production_link', class:"btn-green" do %>
