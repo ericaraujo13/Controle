@@ -48,7 +48,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_014337) do
 
   create_table "transactions", force: :cascade do |t|
     t.bigint "product_id", null: false
-    t.integer "quantity"
+    t.decimal "quantity"
+    t.decimal "amount"
     t.date "date_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

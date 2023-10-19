@@ -1,14 +1,16 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
-
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Transactions</h1>
-    <%= link_to "New transaction", new_transaction_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+<div class="bg-white w-full h-full shadow-lg rounded-lg">
+  <div class="px-2 font-bold">
+    <h1 class="text-3xl py-2">Controle de Vendas</h1>
   </div>
+</div>
+<div class="flex justify-end">
+  <div class="bg-white rounded-lg shadow-lg">
+    <h1 class="text-lg py-0.5 px-2">Total de vendas: <%= number_to_currency(@total_amount, unit: 'R$', separator: ',', delimiter: '.', precision: 2) %></h1>
+  </div>
+</div>
 
-  <div id="transactions" class="min-w-full">
-    <%= render @transactions %>
+<div>
+  <div>
+    <%= render 'table'%>
   </div>
 </div>
