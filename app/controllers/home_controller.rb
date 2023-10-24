@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @productions = Production.where(date_time: week_range)
-    @transactions = Transaction.where(date_time: week_range)
+    @productions = Production.where(date_time: week_range).limit(5)
+    @transactions = Transaction.where(date_time: week_range).limit(5)
   end
 
   def week_range

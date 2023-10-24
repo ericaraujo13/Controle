@@ -14,8 +14,6 @@
                 <th scope="col" class="px-6 py-3">
                     Data
                 </th>
-                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                </th>
             </tr>
         </thead>
         <tbody>
@@ -32,15 +30,6 @@
                 </td>
                 <td class="px-6 py-4 ">
                   <%= transaction.date_time.strftime("%d/%m/%Y") %>
-                </td>
-                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                  <div class="flex space-x-2 items-center">
-                    <div>
-                      <%= link_to "Editar", edit_transaction_path(transaction), class:"btn-primary" %>
-                    </div>
-                    <div>
-                    </div>
-                  </div>
                 </td>
             </tr>
           <% end %>
