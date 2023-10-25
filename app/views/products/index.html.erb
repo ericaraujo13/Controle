@@ -3,7 +3,7 @@
     <h1 class="text-3xl py-2">Produtos</h1>
   </div>
 </div>
-<div class="my-2 flex justify-end">
+<div class="my-2 flex justify-end mt-5">
   <%= turbo_frame_tag 'new_product_component', class: "space-x-2" do %>
     <%= link_to new_product_path, id:'product_link', class:"btn-green" do %>
       + Produto

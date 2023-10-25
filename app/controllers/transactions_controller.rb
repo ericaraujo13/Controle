@@ -23,7 +23,7 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to transaction_url(@transaction), notice: "Venda cadastrada com sucesso." }
+        format.html { redirect_to root_path, notice: "Venda cadastrada com sucesso." }
         format.json { render :show, status: :created, location: @transaction }
       else
         prepare_form
