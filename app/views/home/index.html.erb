@@ -13,7 +13,10 @@
     <% end %>
   <% end %>
 </div>
-<div class="md:flex justify-center space-x-2 mt-6">
+<%= turbo_stream_from "transactions_charts_channel#{current_user.id}" %>
+<%= turbo_stream_from "productions_charts_channel#{current_user.id}" %>
+
+<div class="md:flex justify-center space-x-auto md:space-x-2 md:space-y-0 space-y-2 items-center mt-6">
   <%= render 'home/charts/days/days'%>
   <%= render 'home/charts/productions/productions'%>
   <%= render 'home/charts/transactions/transactions'%>

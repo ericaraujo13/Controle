@@ -1,5 +1,5 @@
 module TransactionsHelper
-  def sells_per_day
+  def sells_per_day(user)
     days = week_range
 
 
@@ -9,7 +9,7 @@ module TransactionsHelper
 
     day_range.each_with_object([]) do |a_day, total|
       week_day, day = a_day
-      total << [week_day, Transaction.joins(:product).where(date_time: day..day.end_of_day, product: {user: current_user}).count]
+      total << [week_day, Transaction.joins(:product).where(date_time: day..day.end_of_day, product: {user: user}).count]
     end
   end
 

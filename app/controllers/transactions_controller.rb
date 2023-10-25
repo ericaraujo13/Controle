@@ -20,37 +20,25 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
-
-    respond_to do |format|
-      if @transaction.save
-        format.html { redirect_to root_path, notice: "Venda cadastrada com sucesso." }
-        format.json { render :show, status: :created, location: @transaction }
-      else
-        prepare_form
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
-      end
+    if @transaction.save
+      redirect_to root_path, notice: "Venda cadastrada com sucesso."
+    else
+      prepare_form
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
       if @transaction.update(transaction_params)
-        format.turbo_stream
-        format.html { redirect_to transaction_url(@transaction), notice: "Venda atualizada com sucesso." }
+        redirect_to transaction_url(@transaction), notice: "Venda atualizada com sucesso."
       else
-        format.turbo_stream { render :edit, status: :unprocessable_entity }
+        render :edit, status: :unprocessable_entity
       end
-    end
   end
 
   def destroy
     @transaction.destroy
-
-    respond_to do |format|
-      format.html { redirect_to transactions_url, notice: "Venda excluida." }
-      format.json { head :no_content }
-    end
+    redirect_to transactions_url, notice: "Venda excluida."
   end
 
   private

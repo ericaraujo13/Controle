@@ -21,27 +21,19 @@ class ProductionsController < ApplicationController
   def create
     @production = Production.new(production_params)
 
-    respond_to do |format|
-      if @production.save
-        format.turbo_stream { redirect_to root_path, notice: "Produção adicionada com sucesso." }
-        format.json { render :show, status: :created, location: @production }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @production.errors, status: :unprocessable_entity }
-        prepare_form
-      end
+    if @production.save
+      redirect_to root_path, notice: "Produção adicionada com sucesso."
+    else
+      render :new, status: :unprocessable_entity
+      prepare_form
     end
   end
 
   def update
-    respond_to do |format|
-      if @production.update(production_params)
-        format.html { redirect_to production_url(@production), notice: "Produção atualizada com sucesso." }
-        format.json { render :show, status: :ok, location: @production }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @production.errors, status: :unprocessable_entity }
-      end
+    if @production.update(production_params)
+      redirect_to production_url(@production), notice: "Produção atualizada com sucesso."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
