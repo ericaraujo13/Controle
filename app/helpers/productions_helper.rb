@@ -8,7 +8,7 @@ module ProductionsHelper
 
     day_range.each_with_object([]) do |a_day, total|
       week_day, day = a_day
-      total << [week_day, Production.where(date_time: day..day.end_of_day).sum(:quantity)]
+      total << [week_day, Production.joins(:product).where(date_time: day..day.end_of_day, product: {user: current_user}).sum(:quantity)]
     end
   end
 

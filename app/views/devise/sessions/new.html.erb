@@ -1,0 +1,11 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div>
+    <%= f.label :email, "Email", class: 'text-sm' %>
+    <%= f.email_field :email, autocomplete: 'email', class: 'input', required: true %>
+  </div>
+  <div class="mt-2">
+    <%= f.label :password, "Senha", class: 'text-sm' %>
+    <%= f.password_field :password, autocomplete: 'current-password', class: 'input' %>
+  </div>
+  <%= f.submit "Entrar", class: "w-full btn-primary mt-5" %>
+<% end %>

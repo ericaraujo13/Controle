@@ -2,7 +2,7 @@ class ProductionsController < ApplicationController
   before_action :set_production, only: %i[ show edit update destroy ]
 
   def index
-    @productions = Production.all.order(date_time: :desc)
+    @productions = Production.joins(:product).where(product: {user: current_user}).all.order(date_time: :desc)
     prepare_form
   end
 
@@ -64,6 +64,6 @@ class ProductionsController < ApplicationController
     end
 
     def prepare_form
-      @products = Product.all.map { |product| [product.name, product.id] }
+      @products = current_user.products.all.map { |product| [product.name, product.id] }
     end
 end

@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @productions = Production.where(date_time: week_range).limit(5)
-    @transactions = Transaction.where(date_time: week_range).limit(5)
+    @productions = Production.joins(:product).where(date_time: week_range, product: {user: current_user}).limit(5)
+    @transactions = Transaction.joins(:product).where(date_time: week_range, product: {user: current_user}).limit(5)
   end
 
   def week_range

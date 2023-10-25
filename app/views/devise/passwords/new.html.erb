@@ -1,0 +1,10 @@
+<% content_for(:title) { 'Recuperar Senha' } %>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name),
+                       html: { class: 'space-y-4 md:space-y-6' })  do |f| %>
+  <div>
+    <%= f.label :email, class: 'form-label' %>
+    <%= f.email_field :email, class: 'form-input', required: true %>
+  </div>
+  <%= f.submit 'Redefinir', class: 'w-full button button-primary'%>
+<% end %>

@@ -2,7 +2,7 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[ show edit update destroy ]
 
   def index
-    @transactions = Transaction.all
+    @transactions = Transaction.joins(:product).where(product: {user: current_user}).all
     @total_amount = @transactions.sum(:amount)
   end
 
@@ -63,6 +63,6 @@ class TransactionsController < ApplicationController
     end
 
     def prepare_form
-      @products = Product.all.map { |product| [product.name, product.id] }
+      @products = current_user.products.all.map { |product| [product.name, product.id] }
     end
 end
