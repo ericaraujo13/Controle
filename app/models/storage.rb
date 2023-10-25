@@ -1,5 +1,5 @@
 class Storage < ApplicationRecord
   belongs_to :production
-  belongs_to :user, through: :production
+  has_one :user, through: :production
 
 end
