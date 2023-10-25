@@ -4,6 +4,13 @@
   </div>
 </div>
 <div>
+  <%= turbo_frame_tag 'new_product_component', class: "space-x-2" do %>
+    <%= link_to new_product_path, id:'product_link', class:"btn-green" do %>
+      + Produto
+    <% end %>
+  <% end %>
+</div>
+<div>
   <div>
     <%= render 'table'%>
   </div>

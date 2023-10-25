@@ -4,11 +4,10 @@
   </div>
 </div>
 <div class="flex justify-end">
-  <div class="bg-white rounded-lg shadow-lg">
+  <div class="bg-white rounded-lg shadow-lg mt-2">
     <h1 class="text-lg py-0.5 px-2">Total de vendas: <%= number_to_currency(@total_amount, unit: 'R$', separator: ',', delimiter: '.', precision: 2) %></h1>
   </div>
 </div>
-
 <div>
   <div>
     <%= render 'table'%>
