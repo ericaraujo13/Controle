@@ -24,8 +24,8 @@ class ProductionsController < ApplicationController
     if @production.save
       redirect_to root_path, notice: "Produção adicionada com sucesso."
     else
-      render :new, status: :unprocessable_entity
       prepare_form
+      render :new, status: :unprocessable_entity
     end
   end
 

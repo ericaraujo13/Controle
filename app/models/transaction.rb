@@ -3,6 +3,11 @@ class Transaction < ApplicationRecord
   has_one :user, through: :product
   after_create_commit :update_charts
 
+  validates :product_id, presence: true
+  validates :quantity, presence: true
+  validates :amount, presence: true
+  validates :date_time, presence: true
+
   private
 
   def update_charts

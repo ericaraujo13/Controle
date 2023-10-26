@@ -1,6 +1,6 @@
 <%= turbo_frame_tag 'new_product_component' do %>
   <div class="w-full items-center bg-white rounded-lg shadow-lg p-2">
-    <%= form_with(model: @product, class: '') do |f| %>
+    <%= form_with(model: @product, data: {turbo_frame: 'tabela'}) do |f| %>
       <% if product.errors.any? %>
         <div class="bg-red-400 p-2 rounded-lg mb-2">
           <% product.errors.each do |error|%>

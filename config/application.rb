@@ -21,17 +21,11 @@ Bundler.require(*Rails.groups)
 module Cogumelos
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.time_zone = "Brasilia"
+    config.encoding = "utf-8"
     config.load_defaults 7.0
-
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
-
-    # Don't generate system test files.
+    I18n.available_locales = %i[pt-BR]
+    I18n.default_locale = :"pt-BR"
     config.generators.system_tests = nil
   end
 end
