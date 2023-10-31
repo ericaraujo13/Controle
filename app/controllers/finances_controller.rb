@@ -20,28 +20,19 @@ class FinancesController < ApplicationController
 
   def create
     @finance = current_user.finances.new(finance_params)
-
-    respond_to do |format|
-      if @finance.save
-        format.html { redirect_to finance_url(@finance), notice: "Finance was successfully created." }
-        format.json { render :show, status: :created, location: @finance }
-      else  
-        prepare_form
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @finance.errors, status: :unprocessable_entity }
-      end
+    if @finance.save
+      redirect_to finances_path, notice: "Finance was successfully created."
+    else  
+      prepare_form
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @finance.update(finance_params)
-        format.html { redirect_to finance_url(@finance), notice: "Finance was successfully updated." }
-        format.json { render :show, status: :ok, location: @finance }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @finance.errors, status: :unprocessable_entity }
-      end
+    if @finance.update(finance_params)
+      redirect_to finance_url(@finance), notice: "Finance was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
