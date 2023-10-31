@@ -1,0 +1,30 @@
+<%= turbo_frame_tag 'new_finance_component' do %>
+  <div class="w-full items-center bg-white rounded-lg shadow-lg p-2">
+    <%= form_with(model: @finance) do |f| %>
+      <% if finance.errors.any? %>
+        <div class="bg-red-400 p-2 rounded-lg mb-2">
+          <% finance.errors.each do |error|%>
+            <div class="text-white">
+              <span><%= error.full_message %></span>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <div class="space-y-2 md:flex md:items-center md:space-x-2 md:space-y-0">
+      <div>
+        <%= f.text_field :description, class: "input ", placeholder: "Descrição" %>
+      </div>
+      <div>
+        <%= f.text_field :amount, class: "input ", placeholder: "Valor" %>
+      </div>
+      <div>
+        <%= f.select :transaction_type, @finances, { include_blank: "Selecione" }, class: "input" %>
+      </div >
+      <div class="flex space-x-1">
+        <%= f.submit "Confirmar", class: "btn-green" %>
+        <%= link_to "Voltar", :back, class: "btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% end %>

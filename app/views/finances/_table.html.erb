@@ -1,0 +1,55 @@
+<div class="mt-6 overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-white  border-b border-gray-300">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Descrição
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Tipo
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Valor
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Data
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @finances.each do |finance| %>
+          <% if finance.transaction_type === "saida" %>
+            <tr class="border-b border-gray-200 text-red-900 bg-red-50">
+                <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap ">
+                  <%= finance.description %>
+                </th>
+                <td class="px-6 py-4">  
+                  <%= finance.transaction_type %>
+                </td>
+                <td class="px-6 py-4">
+                  - <%= number_to_currency(finance.amount, unit: 'R$', separator: ',', delimiter: '.', precision: 2) %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= finance.created_at.strftime("%d/%m/%Y") %>
+                </td>
+            </tr>
+          <% else %>
+            <tr class="border-b border-gray-200 text-green-900 bg-green-50">
+                <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap ">
+                  <%= finance.description %>
+                </th>
+                <td class="px-6 py-4">
+                  <%= finance.transaction_type %>
+                </td>
+                <td class="px-6 py-4">
+                  + <%= number_to_currency(finance.amount, unit: 'R$', separator: ',', delimiter: '.', precision: 2) %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= finance.created_at.strftime("%d/%m/%Y") %>
+                </td>
+            </tr>
+          <% end %>
+        <% end %>
+        </tbody>
+    </table>
+</div>

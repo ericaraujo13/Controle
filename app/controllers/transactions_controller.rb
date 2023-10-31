@@ -22,6 +22,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
     if @transaction.save
       redirect_to root_path, notice: "Venda cadastrada com sucesso."
+      register_sell
     else
       prepare_form
       render :new, status: :unprocessable_entity
@@ -52,5 +53,9 @@ class TransactionsController < ApplicationController
 
     def prepare_form
       @products = current_user.products.all.map { |product| [product.name, product.id] }
+    end
+
+    def register_sell
+      current_user.finances.create(transaction_type: "entrada", description: "Venda", amount: @transaction.amount)
     end
 end

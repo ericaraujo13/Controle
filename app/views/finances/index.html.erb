@@ -1,15 +1,24 @@
 <div class="bg-white w-full h-full shadow-lg rounded-lg">
   <div class="px-2 font-bold">
-    <h1 class="text-3xl py-2">Controle de Vendas</h1>
+    <h1 class="text-3xl py-2">Controle de Caixa</h1>
   </div>
 </div>
+
 <div class="flex justify-end">
   <div class="bg-white rounded-lg shadow-lg mt-5">
-    <p class="text-lg p-2">Total de vendas:
+    <p class="text-lg p-2">Total:
       <%= number_to_currency(@total_amount, unit: 'R$',
        separator: ',', delimiter: '.', precision: 2) %>
     </p>
   </div>
+</div>
+
+<div class="mx-auto justify-end flex mt-6">
+  <%= turbo_frame_tag 'new_finance_component', class: "space-x-2" do %>
+    <%= link_to new_finance_path, id:'finance_link', class:"btn-green" do %>
+      + Movimentação
+    <% end %>
+  <% end %>
 </div>
 <div>
   <div>
