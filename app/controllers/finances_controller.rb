@@ -2,7 +2,13 @@ class FinancesController < ApplicationController
   before_action :set_finance, only: %i[ show edit update destroy ]
 
   def index
-    @finances = current_user.finances.all.page(params[:page]).order(created_at: :desc)
+    params[:q] ||= {}
+    if params[:q][:created_at_lteq].present?
+      params[:q][:created_at_lteq] = params[:q][:created_at_lteq].to_date.end_of_day
+    end
+
+    @q = current_user.finances.ransack(params[:q])
+    @finances = @q.result.page(params[:page]).order(created_at: :desc)
     @total_amount = total_balance
   end
 

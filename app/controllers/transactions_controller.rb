@@ -2,7 +2,13 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[ show edit update destroy ]
 
   def index
-    @transactions = Transaction.joins(:product).where(product: {user: current_user}).all.page(params[:page]).order(date_time: :desc)
+    params[:q] ||= {}
+    if params[:q][:date_time_lteq].present?
+      params[:q][:date_time_lteq] = params[:q][:date_time_lteq].to_date.end_of_day
+    end
+  
+    @q = Transaction.joins(:product).where(product: {user: current_user}).ransack(params[:q])
+    @transactions = @q.result.page(params[:page]).order(date_time: :desc)
     @total_amount = balance
   end
 

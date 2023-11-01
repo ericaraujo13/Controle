@@ -21,6 +21,7 @@ gem "sentry-rails", "~> 5.12"
 gem "devise", "~> 4.9"
 gem "rails-i18n"
 gem 'kaminari'
+gem 'ransack'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

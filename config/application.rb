@@ -27,5 +27,10 @@ module Cogumelos
     I18n.available_locales = %i[pt-BR]
     I18n.default_locale = :"pt-BR"
     config.generators.system_tests = nil
+
+    def ransackable_associations(auth_object = nil)
+      Rails.logger.info("WITHIN RANSACK ASSOCIATION")
+      super + %w[impressionable]
+    end    
   end
 end
