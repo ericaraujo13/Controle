@@ -3,19 +3,21 @@
     <h1 class="text-3xl py-2">Controle de Vendas</h1>
   </div>
 </div>
-<div class="flex justify-end">
-  <div class="bg-white rounded-lg shadow-lg mt-5">
-    <p class="text-lg p-2">Total de vendas:
-      <%= number_to_currency(@total_amount, unit: 'R$',
-       separator: ',', delimiter: '.', precision: 2) %>
-    </p>
+<%= turbo_frame_tag 'tabela-transaction' do %>
+  <div class="flex justify-end">
+    <div class="bg-white rounded-lg shadow-lg mt-5">
+      <p class="text-lg p-2">Total de vendas:
+        <%= number_to_currency(@total_amount, unit: 'R$',
+        separator: ',', delimiter: '.', precision: 2) %>
+      </p>
+    </div>
   </div>
-</div>
-<div class="text-center">
-  <%= paginate @transactions %>
-</div>
-<div>
+  <div class="text-center">
+    <%= paginate @transactions, data: {turbo_frame: 'tabela-transaction'} %>
+  </div>
   <div>
-    <%= render 'table'%>
+    <div>
+      <%= render 'table'%>
+    </div>
   </div>
-</div>
+<% end %>

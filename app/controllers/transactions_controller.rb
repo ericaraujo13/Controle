@@ -3,7 +3,7 @@ class TransactionsController < ApplicationController
 
   def index
     @transactions = Transaction.joins(:product).where(product: {user: current_user}).all.page(params[:page]).order(date_time: :desc)
-    @total_amount = @transactions.sum(:amount)
+    @total_amount = balance
   end
 
   def show
@@ -57,5 +57,9 @@ class TransactionsController < ApplicationController
 
     def register_sell
       current_user.finances.create(transaction_type: "entrada", description: "Venda", amount: @transaction.amount)
+    end
+
+    def balance
+      Transaction.joins(:product).where(product: {user: current_user}).all.sum(:amount)
     end
 end
