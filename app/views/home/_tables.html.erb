@@ -1,79 +1,85 @@
-<div class="mt-5 md:px-4 text-center md:text-start flex items-center justify-between">
-  <h1 class="font-semibold text-3xl">Vendas da semana</h1>
-  <%= link_to "ver mais", transactions_path, data: { turbo: false }, class: "text-blue-700 font-bold hover:text-blue-800" %>
-</div>
-<div class="mt-6 overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                    Produto
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Quantidade (Kgs)
-                </th>
-                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                    Valor
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Data
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-          <% @transactions.each do |transaction| %>
-            <tr class="border-b border-gray-200 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                  <%= transaction.product.name %>
-                </th>
-                <td class="px-6 py-4">
-                  <%= transaction.quantity %>
-                </td>
-                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                  <%= transaction.amount %>
-                </td>
-                <td class="px-6 py-4 ">
-                  <%= transaction.date_time.strftime("%d/%m/%Y") %>
-                </td>
-            </tr>
-          <% end %>
-        </tbody>
-    </table>
-</div>
 
-<div class="mt-5 md:px-4 text-center md:text-start flex items-center justify-between">
-  <h1 class="font-semibold text-3xl">Produção da semana</h1>
-  <%= link_to "ver mais", productions_path, data: { turbo: false }, class: "text-blue-700 hover:text-blue-800 font-bold" %>
-</div>
-<div class="mt-6 overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                    Produto
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Quantidade (Kgs)
-                </th>
-                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                    Data
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-          <% @productions.each do |production| %>
-            <tr class="border-b border-gray-200 dark:border-gray-700">
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                <%= production.product.name %>
-              </th>
-              <td class="px-6 py-4">
-                <%= production.quantity %>
-              </td>
-              <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                  <%= production.date_time.strftime("%d/%m/%Y") %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-    </table>
+<div class="md:grid md:grid-cols-2 md:justify-center md:space-x-12">
+  <div>
+    <div class="mt-5 md:px-4 text-center md:text-start flex items-center justify-between">
+      <h1 class="font-semibold text-3xl">Vendas da semana</h1>
+      <%= link_to "ver mais", transactions_path, data: { turbo: false }, class: "text-blue-700 font-bold hover:text-blue-800" %>
+    </div>
+    <div class="mt-6 overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                        Produto
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Quantidade (Kgs)
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                        Valor
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Data
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+              <% @transactions.each do |transaction| %>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      <%= transaction.product.name %>
+                    </th>
+                    <td class="px-6 py-4">
+                      <%= transaction.quantity %>
+                    </td>
+                    <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                      <%= transaction.amount %>
+                    </td>
+                    <td class="px-6 py-4 ">
+                      <%= transaction.date_time.strftime("%d/%m/%Y") %>
+                    </td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+    </div>
+  </div>
+  <div>
+    <div class="mt-5 md:px-4 text-center md:text-start flex items-center justify-between">
+      <h1 class="font-semibold text-3xl">Produção da semana</h1>
+      <%= link_to "ver mais", productions_path, data: { turbo: false }, class: "text-blue-700 hover:text-blue-800 font-bold" %>
+    </div>
+    <div class="mt-6 overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                        Produto
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Quantidade (Kgs)
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                        Data
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+              <% @productions.each do |production| %>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                    <%= production.product.name %>
+                  </th>
+                  <td class="px-6 py-4">
+                    <%= production.quantity %>
+                  </td>
+                  <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                      <%= production.date_time.strftime("%d/%m/%Y") %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+    </div>
+  </div>
 </div>
