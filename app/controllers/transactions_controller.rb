@@ -2,7 +2,7 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[ show edit update destroy ]
 
   def index
-    @transactions = Transaction.joins(:product).where(product: {user: current_user}).all
+    @transactions = Transaction.joins(:product).where(product: {user: current_user}).all.page(params[:page]).order(date_time: :desc)
     @total_amount = @transactions.sum(:amount)
   end
 

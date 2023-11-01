@@ -1,6 +1,6 @@
 <%= turbo_frame_tag 'new_record_component' do %>
   <div class="w-full items-center bg-white rounded-lg shadow-lg p-2">
-    <%= form_with(model: @production, class: '') do |f| %>
+    <%= form_with(model: @production, data: { turbo_frame: 'tabelas' }) do |f| %>
       <% if production.errors.any? %>
         <div class="bg-red-400 p-2 rounded-lg mb-2">
           <% production.errors.each do |error|%>

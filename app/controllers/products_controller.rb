@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
 
   def index
-    @products = current_user.products.all.order(created_at: :desc)
+    @products = current_user.products.all.order(created_at: :desc).page(params[:page])
   end
 
   def show

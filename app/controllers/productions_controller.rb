@@ -2,7 +2,7 @@ class ProductionsController < ApplicationController
   before_action :set_production, only: %i[ show edit update destroy ]
 
   def index
-    @productions = Production.joins(:product).where(product: {user: current_user}).all.order(date_time: :desc)
+    @productions = Production.joins(:product).where(product: {user: current_user}).all.page(params[:page]).order(quantity: :desc)
     prepare_form
   end
 

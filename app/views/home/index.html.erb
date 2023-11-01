@@ -3,24 +3,26 @@
     <p class="text-3xl py-4">Painel de Controle</p>
   </div>
 </div>
-<div class="mx-auto justify-end flex">
-  <%= turbo_frame_tag 'new_record_component', class: "space-x-2" do %>
-    <%= link_to new_transaction_path, id:'sale_link', class:"btn-green" do %>
-      + Venda
+<%= turbo_frame_tag 'tabelas' do %>
+  <div class="mx-auto justify-end flex">
+    <%= turbo_frame_tag 'new_record_component', class: "space-x-2" do %>
+      <%= link_to new_transaction_path, id:'sale_link', class:"btn-green" do %>
+        + Venda
+      <% end %>
+      <%= link_to new_production_path, id:'production_link', class:"btn-green" do %>
+        + Produção
+      <% end %>
     <% end %>
-    <%= link_to new_production_path, id:'production_link', class:"btn-green" do %>
-      + Produção
-    <% end %>
-  <% end %>
-</div>
-<%= turbo_stream_from "transactions_charts_channel#{current_user.id}" %>
-<%= turbo_stream_from "productions_charts_channel#{current_user.id}" %>
+  </div>
+  <%= turbo_stream_from "transactions_charts_channel#{current_user.id}" %>
+  <%= turbo_stream_from "productions_charts_channel#{current_user.id}" %>
 
-<div class="md:flex justify-center space-x-auto md:space-x-2 md:space-y-0 space-y-2 items-center mt-6">
-  <%= render 'home/charts/days/days'%>
-  <%= render 'home/charts/productions/productions'%>
-  <%= render 'home/charts/transactions/transactions'%>
-</div>
-<div class="px-4">
-  <%= render 'tables' %>
-</div>
+  <div class="md:flex justify-center space-x-auto md:space-x-2 md:space-y-0 space-y-2 items-center mt-6">
+    <%= render 'home/charts/days/days'%>
+    <%= render 'home/charts/productions/productions'%>
+    <%= render 'home/charts/transactions/transactions'%>
+  </div>
+  <div class="px-4">
+    <%= render 'tables' %>
+  </div>
+<% end %>

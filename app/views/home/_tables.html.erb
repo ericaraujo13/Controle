@@ -1,5 +1,6 @@
-<div class="mt-5 md:px-4 text-center md:text-start">
+<div class="mt-5 md:px-4 text-center md:text-start flex items-center justify-between">
   <h1 class="font-semibold text-3xl">Vendas da semana</h1>
+  <%= link_to "ver mais", transactions_path, data: { turbo: false }, class: "text-blue-700 font-bold hover:text-blue-800" %>
 </div>
 <div class="mt-6 overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -39,8 +40,10 @@
         </tbody>
     </table>
 </div>
-<div class="mt-5 md:px-4 text-center md:text-start">
+
+<div class="mt-5 md:px-4 text-center md:text-start flex items-center justify-between">
   <h1 class="font-semibold text-3xl">Produção da semana</h1>
+  <%= link_to "ver mais", productions_path, data: { turbo: false }, class: "text-blue-700 hover:text-blue-800 font-bold" %>
 </div>
 <div class="mt-6 overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

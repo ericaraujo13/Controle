@@ -2,7 +2,7 @@ class FinancesController < ApplicationController
   before_action :set_finance, only: %i[ show edit update destroy ]
 
   def index
-    @finances = current_user.finances.all
+    @finances = current_user.finances.all.page(params[:page]).order(created_at: :desc)
     @total_amount = total_balance
   end
 
