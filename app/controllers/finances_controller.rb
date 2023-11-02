@@ -1,5 +1,6 @@
 class FinancesController < ApplicationController
   before_action :set_finance, only: %i[ show edit update destroy ]
+  include Exportable
 
   def index
     params[:q] ||= {}

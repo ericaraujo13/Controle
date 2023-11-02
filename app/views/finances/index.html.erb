@@ -3,8 +3,14 @@
     <h1 class="text-3xl py-2">Controle de Caixa</h1>
   </div>
 </div>
-<%= turbo_frame_tag 'tabela-finance' do %>
-  <div class="flex justify-end">
+
+  <div class="flex justify-end items-center space-x-2">
+  
+    <div class="mt-5">
+      <%= link_to "Exportar CSV", export_csv_finances_path, class: "btn-primary" %>
+    </div>
+    <%= turbo_frame_tag 'tabela-finance' do %>
+
     <div class="bg-white rounded-lg shadow-lg mt-5">
       <p class="text-lg p-2">Total:
         <%= number_to_currency(@total_amount, unit: 'R$',

@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  resources :finances
+  root 'home#index'
   devise_for :users
   resources :transactions
   resources :products
   resources :storages
-  root 'home#index'
   resources :productions
+  resources :finances do
+    collection do 
+      get :export_csv
+    end
+  end
 end
